@@ -3,7 +3,7 @@
   "name": "eChess",
   "version": "0.1",
 
-  "description": "Free cloud analysis for Chess.com games",
+  "description": "Free local analysis for Chess.com games",
   "homepage_url": "https://chess.emlyn.xyz",
   "icons": {
     "48": "icons/echess48.png",
@@ -17,6 +17,15 @@
   "browser_action": {
     "default_icon": "icons/echess32.png",
     "default_title": "eChess",
-    "default_popup": "popup/analyse.html"
-  }
+    "default_popup": "popup/popup.html"
+  },
+
+  "content-scripts": [
+    {
+      "matches": ["*://chess.com/game/live/*"],
+      "js": ["content.js"]
+    }
+  ]
+
+  ]
 }
