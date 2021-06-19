@@ -10,11 +10,6 @@ function listenForClicks() {
   })
 }
 
-function pgnToUci(pgnStr) {
-
-  }
-}
-
 function moveAnalysis(move, engineTxt, preEngineTxt) {
   //Return values:
     //Book {OPENING}: Move is a book move from the opening OPENING
@@ -29,9 +24,9 @@ function moveAnalysis(move, engineTxt, preEngineTxt) {
 
 }
 
-function gameAnalysis() {
+function gameAnalysis(pgnString) {
   const engineCommands = {
-    "initialize": "uci\nsetoption name Hash value "
+    "initialize": "uci\nsetoption name Hash value " //Suffixed by HashValue
 
     "readyAsk": "isready"
     "readyRes": "readyok"
@@ -39,10 +34,10 @@ function gameAnalysis() {
     "newGameAnalyse": "ucinewgame\nsetoption name UCI_AnalyseMode value true"
 
     "loadPos": "position startpos moves" //Moves should begin with a space and be given in long algebraic notation
-    "search": "go depth "
+    "search": "go depth "//Suffixed by engine depth
   };
 
   //Engine constants
   const HashValue = 32;
-  const OpeningTablePath = ""; //TODO: Download ECO, implement ECO search
+
 }
