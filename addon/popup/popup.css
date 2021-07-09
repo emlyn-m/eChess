@@ -26,3 +26,55 @@ html, body {
   top: 0;
   left: 5%;
 }
+
+#playerInfo {
+  position: absolute;
+  left: 53%;
+  width: 47%;
+}
+
+#results > img {
+  position: absolute;
+  width: 10%;
+  left: 18.5vw;
+  right: 18.5vw;
+  top: 15vh;
+  height: 32.5vh;
+}
+
+#moveEval {
+  height: 28.5vh;
+  position: absolute;
+  top: 49vh;
+  left: 5vw;
+  width: 38vw;
+}
+
+#evalGraph {
+  position: absolute;
+  top: 80vh;
+  height: 20vh;
+  left: 0;
+  width: 53vw;
+}
+
+#controls {
+  height: 20vh;
+  position: absolute;
+  top: 80vh;
+  left: 53vw;
+  width: 23vw;
+
+}
+
+#settings {
+    height: 20vw;
+    position: absolute;
+    top: 80vh;
+    left: 76vw;
+    width: 23vw;
+}
+
+.pName {
+  position: absolute;
+}

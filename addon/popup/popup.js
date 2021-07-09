@@ -15,28 +15,25 @@ function uiInitialize(pgnData) {
   let dataSplit = pgnData.replaceAll('[', '').split(']');
 
 
-  let date = dataSplit[2].substring(6).replaceAll('\"', '');;
+  let date = dataSplit[2].substring(6).replaceAll('\"', '');
 
   let whiteName = dataSplit[4].substring(7).replaceAll('\"', '');
   document.getElementById("playerInfo").children[0].children[0].innerText = whiteName;
-  let whiteElo  = dataSplit[8].substring(10).replaceAll('\"', '');;
-  document.getElementById("playerInfo").children[0].children[1].innerText = whiteElo;
+  let whiteElo  = dataSplit[8].substring(10).replaceAll('\"', '');
+  document.getElementById("playerInfo").children[0].children[2].innerText = whiteElo;
 
-  let blackName = dataSplit[5].substring(7).replaceAll('\"', '');;
+  let blackName = dataSplit[5].substring(7).replaceAll('\"', '');
   document.getElementById("playerInfo").children[1].children[0].innerText = blackName;
-  let blackElo  = dataSplit[9].substring(10).replaceAll('\"', '');;
-  document.getElementById("playerInfo").children[1].children[1].innerText = blackElo;
-
-  console.log(dataSplit[7]);
+  let blackElo  = dataSplit[9].substring(10).replaceAll('\"', '');
+  document.getElementById("playerInfo").children[1].children[2].innerText = blackElo;
 
   let timeCtrl = dataSplit[7].substring(13, dataSplit[7].length-1);
   if (timeCtrl.includes(":")) {
     //Bonus time
-    timeCtrl = (timeCtrl.split(":")[0]/60) + "|" + timeCtrl.split(":")[1]
+    timeCtrl = (timeCtrl.split(":")[0]/60) + "|" + timeCtrl.split(":")[1];
   } else {
-    timeCtrl = timeCtrl / 60 + " | 0"
+    timeCtrl = timeCtrl / 60 + " | 0";
   }
-  console.log(timeCtrl)
 
 }
 
@@ -73,7 +70,7 @@ function moveText(sfCp, playerCp) {
   } else if (delta > 0.1) {
     return "Inaccuracy";
   } else {
-    return "Good"
+    return "Good";
   }
 
 }
