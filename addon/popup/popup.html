@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="popup.css" />
+    <script src="./popup.js" type="module"> </script>
   </head>
 
   <body>
@@ -11,6 +12,39 @@
       <p>An error occurred. Please reload your browser and try again.</p>
     </div>
 
-    <script src="popup.js"> </script>
+    <div id="content">
+
+      <div id="eval-bar">
+      </div>
+
+      <div id="board">
+      </div>
+
+      <div id="playerInfo">
+          <div class="pName">
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="pName">
+            <span></span>
+            <span></span>
+          </div>
+
+          <div id="results">
+            <div class="playerResults">
+            </div>
+
+            <img src="TODO ASAP" />
+
+            <div class="playerResults">
+            </div>
+          </div>
+      </div>
+
+      <img id="eval-graph" src="TODO ASAP EMLYN GET EVAL GRAPH FROM TAB" />
+
+    </div>
+
   </body>
 </html>
