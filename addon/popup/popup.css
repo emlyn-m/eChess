@@ -32,16 +32,16 @@ html, body {
 
 #playerInfo {
   position: absolute;
-  left: 53%;
-  width: 47%;
+  left: 51.5%;
+  width: 48.5%;
+  top: 0;
 }
 
 #results > img {
   position: absolute;
   width: 10%;
-  left: 18.5vw;
-  right: 18.5vw;
-  top: 15vh;
+  left: calc(24.25vw - 5%);
+  top: calc(10vh + 20px);
   height: 32.5vh;
 }
 
@@ -80,4 +80,14 @@ html, body {
 
 .pName {
   position: absolute;
+  border: 5px solid white;
+  width: calc(50% - 20px);
+  top: 0;
+  padding: 5px;
+  height: 9vh;
+}
+
+.pName > span {
+  color: #afafaf;
+  font-family: sans-serif;
 }
