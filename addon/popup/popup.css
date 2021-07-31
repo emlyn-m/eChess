@@ -21,10 +21,13 @@ html, body {
 #board {
   height: 80%;
   width: 48%;
-  background-color: green;
   position: absolute;
   top: 0;
   left: 5%;
+}
+
+#board > img {
+  max-height: 80vh;
 }
 
 #playerInfo {
@@ -55,7 +58,7 @@ html, body {
   top: 80vh;
   height: 20vh;
   left: 0;
-  width: 53vw;
+  width: 51.6vw;
 }
 
 #controls {

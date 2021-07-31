@@ -20,7 +20,7 @@
     "default_popup": "popup/popup.html"
   },
 
-  "content-scripts": [
+  "content_scripts": [
     {
       "matches": ["*://chess.com/game/live/*"],
       "js": ["content.js"]
