@@ -18,13 +18,13 @@ function uiInitialize(pgnData) {
   let date = dataSplit[2].substring(6).replaceAll('\"', '');
 
   let whiteName = dataSplit[4].substring(7).replaceAll('\"', '');
-  document.getElementById("playerInfo").children[0].children[0].innerText = whiteName;
   let whiteElo  = dataSplit[8].substring(10).replaceAll('\"', '');
+  document.getElementById("playerInfo").children[0].children[0].innerText = whiteName;
   document.getElementById("playerInfo").children[0].children[2].innerText = whiteElo;
 
   let blackName = dataSplit[5].substring(7).replaceAll('\"', '');
-  document.getElementById("playerInfo").children[1].children[0].innerText = blackName;
   let blackElo  = dataSplit[9].substring(10).replaceAll('\"', '');
+  document.getElementById("playerInfo").children[1].children[0].innerText = blackName;
   document.getElementById("playerInfo").children[1].children[2].innerText = blackElo;
 
   let timeCtrl = dataSplit[7].substring(13, dataSplit[7].length-1);
@@ -34,6 +34,13 @@ function uiInitialize(pgnData) {
   } else {
     timeCtrl = timeCtrl / 60 + " | 0";
   }
+
+  //Color outline (Win/Loss)
+  console.log(dataSplit[6]);
+  let winner = dataSplit[6].substring(8).indexOf(1) * 0.5;
+  document.getElementById("playerInfo").children[winner].style["border-color"] = "#8de7bd"
+  document.getElementById("playerInfo").children[1-winner].style["border-color"] = "#ff86b3"
+
 
 }
 
