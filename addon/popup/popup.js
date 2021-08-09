@@ -41,7 +41,7 @@ function uiInitialize(pgnData) {
   document.getElementById("playerInfo").children[winner].style["border-color"] = "#8de7bd";
   document.getElementById("playerInfo").children[1-winner].style["border-color"] = "#ff86b3";
 
-  setEval("4.5");
+  setEval("0");
 
 }
 
@@ -62,12 +62,12 @@ function setEval(advantage) {
   } else {
     if (advantage >= 0) { //NB: Max adv: pm9
       //Advantage white
-      document.getElementById("eval-bar").children[0].style["height"] = (50 - (Math.max(advantage, -9) * 5)) + "%";
+      document.getElementById("eval-bar").children[0].style["height"] = (50 - (Math.min(advantage, 9) * 5)) + "%";
       document.getElementById("eval-bar").children[1].innerText = "";
       document.getElementById("eval-bar").children[2].innerText = "+" + Number(advantage).toFixed(2);
     } else {
       //Advantage black
-      document.getElementById("eval-bar").children[0].style["height"] = (50 + (Math.min(advantage, 9) * 5)) + "%";
+      document.getElementById("eval-bar").children[0].style["height"] = (50 - (Math.max(advantage, -9) * 5)) + "%";
       document.getElementById("eval-bar").children[1].innerText = "";
       document.getElementById("eval-bar").children[2].innerText = Number(advantage).toFixed(2);
     }
