@@ -38,10 +38,40 @@ function uiInitialize(pgnData) {
   //Color outline (Win/Loss)
   console.log(dataSplit[6]);
   let winner = dataSplit[6].substring(8).indexOf(1) * 0.5;
-  document.getElementById("playerInfo").children[winner].style["border-color"] = "#8de7bd"
-  document.getElementById("playerInfo").children[1-winner].style["border-color"] = "#ff86b3"
+  document.getElementById("playerInfo").children[winner].style["border-color"] = "#8de7bd";
+  document.getElementById("playerInfo").children[1-winner].style["border-color"] = "#ff86b3";
 
+  setEval("4.5");
 
+}
+
+function setEval(advantage) {
+  if (isNaN(advantage)) {
+    //Forced Mate
+    if (advantage.includes("-")) {
+      //Forced Mate Black
+      document.getElementById("eval-bar").children[0].style["height"] = "95%";
+      document.getElementById("eval-bar").children[1].innerText = advantage;
+      document.getElementById("eval-bar").children[2].innerText = "";
+    } else {
+      //Forced Mate White
+      document.getElementById("eval-bar").children[0].style["height"] = "5%";
+      document.getElementById("eval-bar").children[1].innerText = "";
+      document.getElementById("eval-bar").children[2].innerText = advantage;
+    }
+  } else {
+    if (advantage >= 0) { //NB: Max adv: pm9
+      //Advantage white
+      document.getElementById("eval-bar").children[0].style["height"] = (50 - (Math.max(advantage, -9) * 5)) + "%";
+      document.getElementById("eval-bar").children[1].innerText = "";
+      document.getElementById("eval-bar").children[2].innerText = "+" + Number(advantage).toFixed(2);
+    } else {
+      //Advantage black
+      document.getElementById("eval-bar").children[0].style["height"] = (50 + (Math.min(advantage, 9) * 5)) + "%";
+      document.getElementById("eval-bar").children[1].innerText = "";
+      document.getElementById("eval-bar").children[2].innerText = Number(advantage).toFixed(2);
+    }
+  }
 }
 
 // DEBUG BEGIN

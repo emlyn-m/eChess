@@ -12,10 +12,24 @@ html, body {
 #eval-bar {
   height: 80%;
   width: 5%;
-  background-color: white;
+  background-color: #dfdfdf;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#eval-bar > div {
+  background-color: #101010;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+#eval-bar span {
+  font-size: 7px;
+  font-family: sans-serif;
+  position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
 #board {
