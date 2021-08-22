@@ -2,12 +2,25 @@
 
 function listenForClicks() {
   document.addEventListener("click", (e) => {
-    //TODO: Call content.js
 
     function reportError(err) {
       console.error(`Error: ${err}`)
     }
-  })
+  });
+
+  //Option selector
+  let childOptions = document.getElementById("options").children;
+  console.log(childOptions)
+  for (var i=0; i < childOptions.length; i++) {
+    console.log(i)
+    childOptions[i].addEventListener("click", (e) => {
+      let siblings = document.getElementById("options").children;
+      for (var j=0; j < siblings.length; j++) {
+        siblings[j].classList.remove("selected");
+      }
+      e.currentTarget.classList.add("selected")
+    });
+  }
 }
 
 function uiInitialize(pgnData) {
@@ -36,12 +49,12 @@ function uiInitialize(pgnData) {
   }
 
   //Color outline (Win/Loss)
-  console.log(dataSplit[6]);
   let winner = dataSplit[6].substring(8).indexOf(1) * 0.5;
   document.getElementById("playerInfo").children[winner].style["border-color"] = "#8de7bd";
   document.getElementById("playerInfo").children[1-winner].style["border-color"] = "#ff86b3";
 
   setEval("0");
+  setBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
 
 }
 
@@ -72,6 +85,24 @@ function setEval(advantage) {
       document.getElementById("eval-bar").children[2].innerText = Number(advantage).toFixed(2);
     }
   }
+}
+
+function setBoard(fenString) {
+  const pieces = {
+    K:"♔", Q:"♕", R:"♖", B:"♗", N:"♘", P:"♙",
+    k:"♚", q:"♛", r:"♜", b:"♝", n:"♞", p:"♟",
+  }
+
+  let html = fenString
+    .trim()
+    .replace(/\s+.*/,"")
+    .replace(/\d+/g, n => " ".repeat(n))
+    .replace(/./g, char => "<td>" + (pieces[char] || char)) //Update piece values
+    .replace(/^|<td>\//g,"\n  <tr>");
+  html = html + "\n";
+  document.getElementsByClassName("chess")[0].innerHTML = html;
+
+
 }
 
 // DEBUG BEGIN
@@ -147,3 +178,6 @@ function gameAnalysis(pgnString) {
   const HashValue = 32;
 
 }
+
+browser.tabs.executeScript({file: "content.js"})
+.then(listenForClicks);

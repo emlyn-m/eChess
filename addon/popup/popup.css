@@ -67,12 +67,65 @@ html, body {
   width: 38vw;
 }
 
-#evalGraph {
+#options {
   position: absolute;
   top: 80vh;
   height: 20vh;
   left: 0;
   width: 51.6vw;
+}
+
+#options > div {
+  position: relative;
+  height: 20vh;
+  width: 17.2vw;
+}
+
+.selected {
+  background: #1f1f1f;
+  box-shadow: inset 0px 0px 5px #0a0a0a;
+   outline: none;
+}
+
+#options > div:hover {
+  background: #1f1f1f;
+  box-shadow: inset 0px 0px 5px #0a0a0a;
+   outline: none;
+}
+
+#options img {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+#options input {
+  width: 5vw;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  color: #ddd;
+  float: right;
+  text-decoration: underline;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#options span {
+  color: #ddd;
+  font-size: 12px;
+  float: right;
 }
 
 #controls {
@@ -82,14 +135,6 @@ html, body {
   left: 53vw;
   width: 23vw;
 
-}
-
-#settings {
-    height: 20vw;
-    position: absolute;
-    top: 80vh;
-    left: 76vw;
-    width: 23vw;
 }
 
 .pName {
@@ -104,4 +149,16 @@ html, body {
 .pName > span {
   color: #afafaf;
   font-family: sans-serif;
+}
+
+.chess {
+  height: 80%;
+  width: 48%;
+  position: absolute;
+  top: 0;
+  left: 5%;
+}
+
+.chess tr {
+  height: 12.5%;
 }
