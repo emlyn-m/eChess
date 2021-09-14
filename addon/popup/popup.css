@@ -72,13 +72,14 @@ html, body {
   top: 80vh;
   height: 20vh;
   left: 0;
-  width: 51.6vw;
+  width: 34.4vw;
 }
 
 #options > div {
   position: relative;
   height: 20vh;
   width: 17.2vw;
+  padding-right: 1vw;
 }
 
 .selected {
@@ -135,6 +136,25 @@ input[type=number] {
   left: 53vw;
   width: 23vw;
 
+}
+
+#theme {
+  width: 15.2vw;
+  height: 20vh;
+  position: absolute;
+  left: 36.4vw;
+  top: 80vh;
+}
+
+#theme span {
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  top: -10%;
+  text-align: center;
+  font-size: 50px;
+  color: #ddd;
+  cursor: default;
 }
 
 .pName {

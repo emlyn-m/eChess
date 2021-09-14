@@ -10,9 +10,7 @@ function listenForClicks() {
 
   //Option selector
   let childOptions = document.getElementById("options").children;
-  console.log(childOptions)
   for (var i=0; i < childOptions.length; i++) {
-    console.log(i)
     childOptions[i].addEventListener("click", (e) => {
       let siblings = document.getElementById("options").children;
       for (var j=0; j < siblings.length; j++) {
@@ -21,9 +19,36 @@ function listenForClicks() {
       e.currentTarget.classList.add("selected")
     });
   }
+
+  //Theme selectors
+  document.getElementById("themeNeg").addEventListener("click", async (e) => {
+    let currTheme = (await browser.storage.local.get("active-theme"))["active-theme"];
+    let themeList = (await browser.storage.local.get("theme-list"))["theme-list"];
+
+    let themeIdx = themeList.indexOf(currTheme)+1 || 1;
+    themeIdx -= 1
+    currTheme = themeList[(themeIdx-1)%themeList.length]; //TODO: Modulo bug ((this%n)+n)%n;
+
+    browser.storage.local.set({"active-theme": currTheme});
+
+    document.getElementById("theme").children[1].innerText = currTheme;
+  });
+
+  document.getElementById("themePos").addEventListener("click", async (e) => {
+    let currTheme = (await browser.storage.local.get("active-theme"))["active-theme"];
+    let themeList = (await browser.storage.local.get("theme-list"))["theme-list"];
+
+    let themeIdx = themeList.indexOf(currTheme)+1 || 1;
+    themeIdx -= 1
+    currTheme = themeList[(themeIdx+1)%themeList.length];
+
+    browser.storage.local.set({"active-theme": currTheme});
+
+    document.getElementById("theme").children[1].innerText = currTheme;
+  });
 }
 
-function uiInitialize(pgnData) {
+async function uiInitialize(pgnData) {
 
   let dataSplit = pgnData.replaceAll('[', '').split(']');
 
@@ -52,6 +77,16 @@ function uiInitialize(pgnData) {
   let winner = dataSplit[6].substring(8).indexOf(1) * 0.5;
   document.getElementById("playerInfo").children[winner].style["border-color"] = "#8de7bd";
   document.getElementById("playerInfo").children[1-winner].style["border-color"] = "#ff86b3";
+
+  //Check Theme values exist
+  if ((await browser.storage.local.get("theme-list"))[0] != "Classic") {
+    browser.storage.local.set({
+      "theme-list": ["Classic", "Theme2", "Theme3"]
+    });
+  }
+
+  //Set Theme
+  document.getElementById("theme").children[1].innerText = await browser.storage.local.get("active-theme")["active-theme"] || "Classic"
 
   setEval("0");
   setBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
